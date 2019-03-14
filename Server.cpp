@@ -53,9 +53,14 @@ void Server::processClient(pid_t pid) {
     ofstream out(outPath);
 
     if (!in) {
-        cerr << "Failed to open FIFO " << inPath << ": " << endl;
+        cerr << "Failed to open FIFO " << inPath << endl;
         return;
     }
+    if (!out) {
+        cerr << "Failed to open FIFO " << outPath << endl;
+        return;
+    }
+
 
     for (string line, result; getline(in, line); ) {
         if (processCommand(line, result)) {
