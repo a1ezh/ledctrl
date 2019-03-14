@@ -53,8 +53,9 @@ public:
     }
 
     friend std::ostream &operator<<(std::ostream &os, const LedControl &lc) {
+        auto color = lc.getColor();
         return os << "state=" << (lc.getState() == State::On ? "on" : "off")
-                  << " color=" << (lc.getColor() == Color::Red ? "red" : (lc.m_color == Color::Green ? "green" : "blue"))
+                  << " color=" << (color == Color::Red ? "red" : (color == Color::Green ? "green" : "blue"))
                   << " rate=" << lc.getRate();
     }
 
