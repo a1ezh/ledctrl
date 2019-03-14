@@ -20,11 +20,13 @@ private:
     // Thread worker for each incoming client
     void processClient(pid_t pid);
 
+    // Parse line with client PID
     bool getPid(const std::string &line, pid_t &pid);
 
     // Parse command and argument
     bool parseCommand(const std::string &line, std::string &command, std::string &arg);
 
+    // Controls LED and sets result if needed
     bool processCommand(const std::string &line, std::string &result);
 
     void removeFifo();
@@ -38,8 +40,5 @@ private:
     std::ofstream m_dummy;
     LedControl m_ledControl;
 };
-
-
-
 
 #endif
